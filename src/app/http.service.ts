@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,18 +27,30 @@ getEmployeeList() {
   return this.http.get(this.baseUrl  + '/employees', { headers: this.httpHeaders })
 }
 
+
+
 postDataToServer(endpoint:string,data:any){
   const url=this.baseUrl + endpoint;
   return this.http.post(url,data, {headers:this.httpHeaders})
 }
 
 
-
-
-updateEmployee(data: any, id: any) {
-  return this.http.put(this.baseUrl  + id, data, { headers: this.httpHeaders });
+putDataToServer(endpoint:string,data:any){
+  const url=this.baseUrl + endpoint;
+  return this.http.put(url,data, {headers:this.httpHeaders})
 }
 
+
+
+deleteEmployee( id: any) {
+  
+  return this.http.delete<any>(this.baseUrl  + id, { headers: this.httpHeaders  });
+}
+
+deleteDataFromServer(endpoint:string){
+  const url=this.baseUrl + endpoint;
+  return this.http.delete(url, {headers:this.httpHeaders})
+}
 
 
 }

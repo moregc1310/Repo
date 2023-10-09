@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../http.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -13,7 +13,7 @@ export class EmployedetailsComponent implements OnInit{
   selectedEmployeeId:string | any ;
   employeDetails:any;
 
-  constructor(private route:ActivatedRoute,private http:HttpService,private fb:FormBuilder){
+  constructor(private route:ActivatedRoute,private http:HttpService,private fb:FormBuilder,private router: Router){
    
   }
 
@@ -21,7 +21,7 @@ export class EmployedetailsComponent implements OnInit{
     this.selectedEmployeeId=this.route.snapshot.paramMap.get("id");
     console.log("selected id " + this.selectedEmployeeId);
    this.getAllEmployeeList();
-   //this.updateEmployee();
+   this.updateEmployee();
     
   }
 
@@ -40,13 +40,26 @@ export class EmployedetailsComponent implements OnInit{
   };
 
 
-  // updateEmployee(){
-  //   this.http.updateEmployee(this.employeDetails,this.selectedEmployeeId).subscribe((response:any)=>{
-  //         console.log("success");
-  //   })
-  // }
+  updateEmployee(){
+    const reqBody=this.employeDetails;
+    const endpoint="update/"+this.selectedEmployeeId
+    this.http.putDataToServer(endpoint,reqBody).subscribe((response:any)=>{
+          console.log("success",response);
+    })
+  }
 
   
+
+
+  deleteEmployee() {
+    const endpoint = 'delete/' + this.selectedEmployeeId;
+    this.http.deleteDataFromServer(endpoint).subscribe((response: any) => {
+      console.log('Deleted successfully');
+     
+      this.employeDetails = null;
+      this.router.navigate(['/employee']);
+    });
+  }
 
  
 

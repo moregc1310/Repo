@@ -18,8 +18,9 @@
             <input type="text" class="form-control" id="id3" style="background-color: white;" value="{{employeDetails?.employee_age}}" >
           </div>
           <div class="col-md-6">
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" id="cancle" >Update</button>
-            <!-- (click)="updateEmployee()" -->
+            <button type="submit" class="btn btn-dark" data-bs-dismiss="modal" id="cancle"  (click)="updateEmployee()" >Update</button>
+            <button type="submit" class="btn btn-dark" data-bs-dismiss="modal" id="cancle"  (click)="deleteEmployee()" >delete</button>
+           
           </div>
     </form>
 

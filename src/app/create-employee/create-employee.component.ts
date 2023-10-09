@@ -24,7 +24,8 @@ export class CreateEmployeeComponent implements OnInit{
     this.employeeForm=this.fb.group({
     "name":[''],
     "salary":[''],
-    "age":['']
+    "age":[''],
+    "id":['']
     })
   }
 
@@ -33,16 +34,18 @@ export class CreateEmployeeComponent implements OnInit{
     const reqBody=this.employeeForm.value;
     this.http.postDataToServer("create",reqBody).subscribe((data:any)=>{
       if (data.status_code == "200") {
-        this.toastr.success('Hello world!', 'Toastr fun!');
-        this.toast.success({ detail: "SUCCESS", summary: 'employee Create Successfully', duration: 5000, position: 'topRight' });
+        this.toastr.success('Employee Created Successfully', 'Employee Created Successfully');
+        //this.toast.success({ detail: "SUCCESS", summary: 'employee Create Successfully', duration: 5000, position: 'topRight' });
       }
       
       console.log("success");
     },
     (error:any)=>{
-      this.toastr.success('Hello world!', 'Toastr fun!');
-      this.toast.error({ detail: "Error! please try again!", summary: 'error', duration: 5000, position: 'topRight' });
+      this.toastr.success('Employee Not Created', 'Employee Not Created');
+      //this.toast.error({ detail: "Error! please try again!", summary: 'error', duration: 5000, position: 'topRight' });
     })
   }
+
+
 
 }
