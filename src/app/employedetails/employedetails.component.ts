@@ -32,7 +32,7 @@ export class EmployedetailsComponent implements OnInit{
         this.employeDetails = response.data.find((i: { id: number }) => i.id == this.employeDetails)
       }
     })
-    this.http.getProjectListById(this.selectedEmployeeId).subscribe((response: any) => {
+    this.http.getEmployeeById(this.selectedEmployeeId).subscribe((response: any) => {
       this.employeDetails = response.data;
       console.log("response By ID " + response);
       

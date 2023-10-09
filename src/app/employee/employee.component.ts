@@ -13,20 +13,10 @@ export class EmployeeComponent implements OnInit{
   constructor(private http:HttpService){}
   ngOnInit(): void {
     this.getAllEmployeeList();
-   //this.getEmployess();
+   
   }
 
-  // getEmployess(){
-  //   this.http.getDataFromServer("employees").subscribe((el:any)=>{
-  //      console.log(el.data);
-  //       this.employeeList=el.data;
-
-  //   },
-  //   error=>{
-  //     console.log('There was an error!' + error);
-  //   })
-  // }
-
+  
 
   getAllEmployeeList() {
     this.http.getEmployeeList().subscribe((response: any) => {

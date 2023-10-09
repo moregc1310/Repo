@@ -13,24 +13,19 @@ export class HttpService {
 
   constructor(private http:HttpClient) { }
 
-// getDataFromServer(endpoint:string){
-//   const url=this.baseUrl + endpoint;
-//   return this.http.get(url,{headers:this.httpHeaders})
-// }
 
 
-// getEmployees(): Observable<any> {
-//   return this.http.get(this.baseUrl);
-// }
- 
-
-getProjectListById(id: any) {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+getEmployeeById(id: any) {
+  
   return this.http.get(this.baseUrl  + '/employee/' + id, { headers: this.httpHeaders })
 }
 
 
 
+getEmployeeList() {
+ 
+  return this.http.get(this.baseUrl  + '/employees', { headers: this.httpHeaders })
+}
 
 postDataToServer(endpoint:string,data:any){
   const url=this.baseUrl + endpoint;
@@ -38,13 +33,9 @@ postDataToServer(endpoint:string,data:any){
 }
 
 
-getEmployeeList() {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  return this.http.get(this.baseUrl  + '/employees', { headers: this.httpHeaders })
-}
+
 
 updateEmployee(data: any, id: any) {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   return this.http.put(this.baseUrl  + id, data, { headers: this.httpHeaders });
 }
 
