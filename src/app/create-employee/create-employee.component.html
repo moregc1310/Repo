@@ -1,0 +1,29 @@
+<p>create-employee works!</p>
+<div class="container">
+    <div class="modal-body">
+        <h3 class="mt-5">Create Employee</h3>
+        <form [formGroup]="employeeForm" (ngSubmit)="submit()">
+          <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" name="employee_name" formControlName="name">
+          </div>
+          <div class="mb-3">
+              <label for="exampleInputDepart" class="form-label">Salary</label>
+              <input type="text" class="form-control" id="exampleInputDepart" aria-describedby="emailHelp" name="employee_salary" formControlName="salary">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputAddress" class="form-label">Age</label>
+              <input type="email" class="form-control" id="exampleInputAddres" aria-describedby="emailHelp" name="employee_age" formControlName="age">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-dark" data-bs-dismiss="modal"  >Submit</button>
+              </div>
+            
+          <!-- <div class="mt-2 text-center">
+              <button type="button" class="btn btn-dark" data-bs-dismiss="modal" id="cancle">Close</button>
+              <button *ngIf="showAdd" type="submit" class="btn btn-primary ms-2" (click)="submit()">Add</button>
+              <button *ngIf="showUpdate" type="button" class="btn btn-primary ms-2" (click)="updateEmployee()">update</button>
+            </div> -->
+        </form>
+      </div>
+    </div>
